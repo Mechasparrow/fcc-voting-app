@@ -57,6 +57,33 @@ module.exports = function (app, passport) {
 			res.render('profile', context);
 			
 		})
+		
+	app.route('/createpoll')
+		.get(isLoggedIn, function (req, res) {
+			
+			var loggedin = req.isAuthenticated();
+			
+			var user = req.user;
+			
+			var context = {
+				loggedin: loggedin,
+				user: user
+			}
+			
+			res.render('createpoll', context);
+			
+			
+		})
+		
+		.post(isLoggedIn, function (req, res) {
+			
+			res.json(req.body);
+			
+			
+			
+		})
+		
+		
 
 	app.route('/logout')
 		.get(function (req, res) {

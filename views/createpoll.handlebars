@@ -1,0 +1,21 @@
+<h1 class = "text-center">
+    Create a poll
+</h1>
+
+<form name = "createpoll" method = "POST" action = "/createpoll">
+    
+    <div class = "form-group">
+        <label>Poll name: </label>
+        <input type = "text" class = "form-control" name = "pollname" placeholder = "Poll name">
+    </div>
+    
+    <label>Poll choices (seperated by line)</label>
+    
+    <div class = "vote-choices">
+        <textarea type = "text" class = "form-control" name = "poll-choice" placeholder = "Choices"></textarea>
+    </div>
+    
+    <br>
+    <button type = "submit" class = "btn btn-default">Submit</button>
+    
+</form>
