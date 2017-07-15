@@ -12,14 +12,6 @@ module.exports = function (app, passport) {
 		}
 	}
 
-
-
-
-	/**app.route('/')
-		.get(function (req, res) {
-			res.sendFile(path + '/public/index.html');
-		});**/
-		
 	app.route('/')
 		.get(function (req, res) {
 			
@@ -77,7 +69,13 @@ module.exports = function (app, passport) {
 		
 		.post(isLoggedIn, function (req, res) {
 			
-			res.json(req.body);
+			var parsed_model = req.body;
+			
+			var new_poll_choice = req.body['poll-choice'].split(/\r\n/);
+			
+			parsed_model['poll-choice'] = new_poll_choice;
+			
+			res.json(parsed_model);
 			
 			
 			
