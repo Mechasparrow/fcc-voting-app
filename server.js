@@ -6,7 +6,13 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 
+var exphbs = require('express-handlebars');
+
 var app = express();
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 require('dotenv').load();
 require('./app/config/passport')(passport);
 
@@ -27,6 +33,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 routes(app, passport);
+
+
+
 
 var port = process.env.PORT || 8080;
 app.listen(port,  function () {
