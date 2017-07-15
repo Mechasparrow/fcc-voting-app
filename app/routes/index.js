@@ -1,6 +1,8 @@
 'use strict';
 
 var path = process.cwd();
+var pollController = require('../controllers/pollcontroller.js');
+
 
 module.exports = function (app, passport) {
 
@@ -74,9 +76,8 @@ module.exports = function (app, passport) {
 			var new_poll_choice = req.body['poll-choice'].split(/\r\n/);
 			
 			parsed_model['poll-choice'] = new_poll_choice;
-			
-			res.json(parsed_model);
-			
+				
+			pollController.createPoll(req, res, parsed_model);
 			
 			
 		})
