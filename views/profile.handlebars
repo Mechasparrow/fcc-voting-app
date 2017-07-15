@@ -5,8 +5,24 @@
 
 <a href = "/createpoll" class = "btn btn-block btn-default">Create Poll</a>
 
+<br>
+
 {{#if polls}}
-    <p>We can view polls</p>  
+    
+    <div class = "polls">
+        {{#each polls}}
+            <div class = "well">
+                {{this}}
+                <form method = "POST" action = "/deletepoll">
+                    <input type = "hidden" name = "poll" value = {{this}}>
+                    <button type = "submit" class = "btn btn-danger">Delete</button>
+                </form>
+            </div>
+        {{/each}}
+    </div>
+    
+    
+    
 {{else}}
     <p>no polls</p>
 {{/if}}

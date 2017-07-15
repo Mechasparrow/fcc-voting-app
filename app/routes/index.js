@@ -40,6 +40,7 @@ module.exports = function (app, passport) {
 			var user_info = req.user.twitter;
 			var polls = req.user.polls;
 			
+			console.log(polls);
 			
 			
 			var context = {
@@ -82,7 +83,14 @@ module.exports = function (app, passport) {
 			
 		})
 		
-		
+	app.route('/deletepoll')
+		.post(isLoggedIn, function (req, res) {
+			
+			var poll_id = req.body.poll;
+			
+			pollController.deletePoll(req, res, poll_id);
+			
+		})
 
 	app.route('/logout')
 		.get(function (req, res) {
