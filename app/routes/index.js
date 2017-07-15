@@ -8,7 +8,7 @@ module.exports = function (app, passport) {
 		if (req.isAuthenticated()) {
 			return next();
 		} else {
-			res.redirect('/login');
+			res.redirect('/');
 		}
 	}
 
@@ -25,25 +25,43 @@ module.exports = function (app, passport) {
 			
 			var loggedin = req.isAuthenticated()
 			
-			res.render('home', {
+			var context = {
 				loggedin: loggedin
-			});
+			}
+			
+			if (loggedin == true) {
+				context.user = req.user;
+			}
+			
+			
+			res.render('home', context);
 		});
-
-	app.route('/login')
-		.get(function (req, res) {
-			res.sendFile(path + '/public/login.html');
-		});
+		
+	app.route('/profile')
+		.get(isLoggedIn, function (req, res) {
+			
+			var loggedin = req.isAuthenticated();
+			
+			var user = req.user;
+			var user_info = req.user.twitter;
+			var polls = req.user.polls;
+			
+			
+			
+			var context = {
+				loggedin: loggedin,
+				user: user,
+				user_info: user_info,
+				polls: polls
+			}
+			res.render('profile', context);
+			
+		})
 
 	app.route('/logout')
 		.get(function (req, res) {
 			req.logout();
 			res.redirect('/');
-		});
-
-	app.route('/profile')
-		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/profile.html');
 		});
 
 	app.route('/api/:id')
