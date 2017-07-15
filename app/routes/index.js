@@ -22,7 +22,12 @@ module.exports = function (app, passport) {
 		
 	app.route('/')
 		.get(function (req, res) {
-			res.render('home');
+			
+			var loggedin = req.isAuthenticated()
+			
+			res.render('home', {
+				loggedin: loggedin
+			});
 		});
 
 	app.route('/login')
@@ -33,7 +38,7 @@ module.exports = function (app, passport) {
 	app.route('/logout')
 		.get(function (req, res) {
 			req.logout();
-			res.redirect('/login');
+			res.redirect('/');
 		});
 
 	app.route('/profile')
