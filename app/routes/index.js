@@ -58,6 +58,13 @@ module.exports = function (app, passport) {
 			
 			
 		})
+	
+	app.route('/polls/:pollid')
+		.get(function (req, res) {
+			var pollid = req.params.pollid;
+			res.json(pollid);
+		})
+	
 		
 	app.route('/createpoll')
 		.get(isLoggedIn, function (req, res) {
