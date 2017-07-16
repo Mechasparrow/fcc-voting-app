@@ -9,3 +9,20 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/** poll stuff **/
+
+.poll-card {
+	min-height: 20px;
+	padding: 40px;
+	border: 1px solid black;
+}
+
+
+.poll-name {
+	display:inline;
+}
+
+.poll-buttons {
+	float: right;
+}

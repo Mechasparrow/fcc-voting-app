@@ -27,8 +27,12 @@ module.exports = function (app, passport) {
 				context.user = req.user;
 			}
 			
+			pollController.getAllPolls().then (function (polls) {
+				context.polls = polls;
+				res.render("home", context);
+			});
 			
-			res.render('home', context);
+			
 		});
 		
 	app.route('/profile')

@@ -76,9 +76,26 @@ module.exports = {
     
         return promise;
         
+    }, 
+    
+    getAllPolls: function () {
+        
+        var promise = new Promise (function (resolve, reject) {
+            
+            Poll.find({}, function (err, polls) {
+                if (err) {
+                    reject(err);
+                }
+                
+                resolve(polls);
+            })
+            
+                
+        });
+        
+        return promise;
+        
     }
-    
-    
     
     
 }
