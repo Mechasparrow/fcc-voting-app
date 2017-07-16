@@ -1,0 +1,21 @@
+<div class = "well">
+    <div>
+        <p class = "poll-name">{{poll.pollname}}</p>
+                
+        <div  class = "poll-buttons">
+                    
+            {{#if personal}}
+                <form style = "display:inline;" method = "POST" action = "/deletepoll">
+                    <input type = "hidden" name = "poll" value = {{poll.id}}>
+                    <button type = "submit" class = "btn btn-danger">Delete</button>
+                </form>
+            {{/if}}
+                
+            <a style = "display:inline;" class = "btn btn-success">View</a>
+        </div>
+                
+        
+                
+        
+    </div>
+</div>

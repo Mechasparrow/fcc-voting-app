@@ -11,19 +11,7 @@
     
     <div class = "polls">
         {{#each polls}}
-            <div class = "well">
-                <p class = "poll-name">{{this.pollname}}</p>
-                
-                <div  class = "poll-buttons">
-                    <form style = "display:inline;" method = "POST" action = "/deletepoll">
-                        <input type = "hidden" name = "poll" value = {{this}}>
-                        <button type = "submit" class = "btn btn-danger">Delete</button>
-                    </form>
-                
-                    <a style = "display:inline;" class = "btn btn-success">View</a>
-                </div>
-                
-            </div>
+            {{> pollcard poll=this personal=true}}
         {{/each}}
     </div>
     

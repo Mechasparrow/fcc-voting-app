@@ -7,15 +7,7 @@
     
     <div class = "polls">
         {{#each polls}}
-            <div class = "well">
-                <div>
-                    <p class = "poll-name">{{this.pollname}}</p>
-                
-                    <div class = "poll-buttons">
-                        <a class = "btn btn-success">View</a>
-                    </div>
-                </div>
-            </div>
+            {{> pollcard poll=this}}
         {{/each}}
     </div>
     
