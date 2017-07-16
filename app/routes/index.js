@@ -62,7 +62,18 @@ module.exports = function (app, passport) {
 	app.route('/polls/:pollid')
 		.get(function (req, res) {
 			var pollid = req.params.pollid;
-			res.json(pollid);
+			
+			var loggedin = req.isAuthenticated();
+			
+			var context = {
+				loggedin: loggedin
+			}
+			
+			pollController.getPoll(pollid).then (function (poll) {
+				context.poll = poll;
+				res.render('viewpoll', context);
+			});
+			
 		})
 	
 		

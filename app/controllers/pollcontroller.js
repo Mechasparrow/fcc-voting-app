@@ -52,6 +52,24 @@ module.exports = {
             
     }, 
     
+    getPoll: function (poll_id) {
+        
+        var promise = new Promise(function (resolve, reject) {
+           
+           Poll.findOne({"_id": poll_id}, function (err, poll) {
+            if (err) {
+                reject(err);
+            } 
+            
+            resolve(poll);
+               
+           })
+            
+        });
+        
+        return promise;
+    },
+    
     getPolls: function (poll_ids) {
     
         var promise = new Promise(function (resolve, reject) {
