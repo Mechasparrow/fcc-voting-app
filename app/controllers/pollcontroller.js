@@ -50,7 +50,35 @@ module.exports = {
             
         })
             
+    }, 
+    
+    getPolls: function (poll_ids) {
+    
+        var promise = new Promise(function (resolve, reject) {
+           
+           var poll_length = poll_ids.length;
+           var polls = [];
+           
+           
+           for (var i = 0; i < poll_length; i ++ ){
+            
+              Poll.findOne({"_id": poll_ids[i]}, function (err, poll) {
+                 polls.push(poll);
+                 
+                 if (polls.length == poll_length) {
+                     resolve(polls);
+                 }
+              })
+        
+           }
+           
+        });
+    
+        return promise;
+        
     }
+    
+    
     
     
 }

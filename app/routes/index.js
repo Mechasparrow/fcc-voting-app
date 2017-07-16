@@ -40,16 +40,18 @@ module.exports = function (app, passport) {
 			var user_info = req.user.twitter;
 			var polls = req.user.polls;
 			
-			console.log(polls);
-			
 			
 			var context = {
 				loggedin: loggedin,
 				user: user,
 				user_info: user_info,
-				polls: polls
 			}
-			res.render('profile', context);
+			
+			pollController.getPolls(polls).then (function (polls) {
+				context.polls = polls;
+				res.render('profile', context);
+			});
+			
 			
 		})
 		

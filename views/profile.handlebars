@@ -12,11 +12,17 @@
     <div class = "polls">
         {{#each polls}}
             <div class = "well">
-                {{this}}
-                <form method = "POST" action = "/deletepoll">
-                    <input type = "hidden" name = "poll" value = {{this}}>
-                    <button type = "submit" class = "btn btn-danger">Delete</button>
-                </form>
+                {{this.pollname}}
+                
+                <div  class = "poll-buttons">
+                    <form style = "display:inline;" method = "POST" action = "/deletepoll">
+                        <input type = "hidden" name = "poll" value = {{this}}>
+                        <button type = "submit" class = "btn btn-danger">Delete</button>
+                    </form>
+                
+                    <button style = "display:inline;" class = "btn btn-success">View</button>
+                </div>
+                
             </div>
         {{/each}}
     </div>
