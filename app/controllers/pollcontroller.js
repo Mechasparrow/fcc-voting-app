@@ -26,6 +26,29 @@ module.exports = {
 
     },
     
+    submitPoll: function (req, res, params) {
+      
+        var poll_id = params.poll;
+        var poll_choice = params['poll-choice'];
+        
+        Poll.findOne({"_id": poll_id}, function (err, poll) {
+            if (err) {
+                throw err;
+            }
+            
+            poll.votes.push(poll_choice)
+            
+            poll.save(function (err) {
+                if (err) {
+                    throw err;
+                }
+                res.redirect('/polls/' + poll_id);
+            })
+            
+        })
+        
+    },
+    
     deletePoll: function (req, res, poll_id) {
         
         

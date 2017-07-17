@@ -75,6 +75,15 @@ module.exports = function (app, passport) {
 			});
 			
 		})
+		
+	app.route('/submitpoll')
+		.post(function (req, res) {
+			
+			var params = req.body;
+			
+			pollController.submitPoll(req, res, params);
+			
+		})
 	
 		
 	app.route('/createpoll')
