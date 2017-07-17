@@ -2,3 +2,45 @@
     You are currently viewing the <b>{{poll.pollname}}</b> poll
 </h1>
 
+<div class = "well">
+    
+    <div class = "row">
+        
+        
+        <!-- Polling form -->
+        <div class = "col-sm-6">
+            <form name = "submitpoll" method = "POST" action = "/submitpoll">
+                
+                <input type = "hidden" name = "poll" value = {{poll.id}}>    
+                
+                <div class = "form-group">
+                    <label>choice: </label>
+                    <br>
+                    <select name = "poll-choice">
+                        {{#each poll.options}}
+                            <option value = {{this}}>{{this}}</option>
+                        {{/each}}
+                    </select>
+                    
+                    
+                    
+                </div>
+                
+                <br>
+                <button type = "submit" class = "btn btn-default">Submit</button>
+                
+            </form>
+        </div>
+        
+        
+        <!-- Polling results -->
+        <div class = "col-sm-6">
+            
+        </div>
+        
+        
+        
+    </div>
+    
+    
+</div>
