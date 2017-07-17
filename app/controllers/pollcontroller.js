@@ -107,6 +107,10 @@ module.exports = {
            var poll_length = poll_ids.length;
            var polls = [];
            
+           if (poll_length == 0) {
+               resolve(polls);
+           }
+           
            
            for (var i = 0; i < poll_length; i ++ ){
             
@@ -119,6 +123,7 @@ module.exports = {
               })
         
            }
+           
            
         });
     
