@@ -30,13 +30,20 @@ module.exports = {
       
         var poll_id = params.poll;
         var poll_choice = params['poll-choice'];
+        var custom_poll_choice = params['custom-choice'];
         
         Poll.findOne({"_id": poll_id}, function (err, poll) {
             if (err) {
                 throw err;
             }
             
-            poll.votes.push(poll_choice)
+            
+            if (poll_choice == "custom") {
+                poll.options.push(custom_poll_choice);
+                poll.votes.push(custom_poll_choice);
+            }else {
+                poll.votes.push(poll_choice)
+            }
             
             poll.save(function (err) {
                 if (err) {

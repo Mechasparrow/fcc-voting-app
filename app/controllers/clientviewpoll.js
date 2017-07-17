@@ -49,6 +49,7 @@ function getPoll(poll_id) {
 function graphChart(poll) {
     
     var data = calculatePollVotes(poll);
+    var colors = generatePollColors(poll);
     
     var ctx = document.getElementById('pollchart').getContext('2d');
     
@@ -74,12 +75,7 @@ function graphChart(poll) {
     var chartdata = {
         datasets: [{
             data: data, 
-            backgroundColor: [
-                getRandomColor(), 
-                getRandomColor(), 
-                getRandomColor()
-            
-            ]
+            backgroundColor: colors
         }],
     
         // These labels appear in the legend and in the tooltips when hovering different arcs
@@ -112,6 +108,22 @@ function calculatePollVotes(poll) {
     }
     
     return counts;
+    
+    
+}
+
+function generatePollColors(poll) {
+    var choices = poll.options;
+    
+    var colors = [];
+    
+    for (var i = 0; i < choices.length; i ++) {
+        var color = getRandomColor();
+        colors.push(color);
+    }
+
+    return colors;
+    
     
     
 }
