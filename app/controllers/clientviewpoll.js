@@ -8,6 +8,27 @@ $(document).ready (function (){
         graphChart(poll);
     })
     
+    //Select change
+    var select = $("#poll-choice");
+    
+    var custom_input = $("#customchoice");
+    custom_input.hide();
+    
+    
+    select.change (function () {
+        var selected = select.val();
+        
+        if (selected == "custom") {
+            custom_input.show();
+        }else {
+            custom_input.hide();
+        }
+        
+        
+    })
+    
+    
+    
     
 })
 

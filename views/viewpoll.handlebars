@@ -18,13 +18,26 @@
                 <div class = "form-group">
                     <label>choice: </label>
                     <br>
-                    <select name = "poll-choice">
+                    <select id = "poll-choice" name = "poll-choice">
                         {{#each poll.options}}
                             <option value = {{this}}>{{this}}</option>
                         {{/each}}
+                        
+                        {{#if loggedin}}
+                            <option value = "custom">Custom option</option>
+                        {{/if}}
+                        
+                        
                     </select>
                     
                     
+                    
+                </div>
+                
+                <div id = "customchoice" class = "form-group">
+                    <label>custom choice: </label>
+                    <br>
+                    <input type = "text" name = "custom-choice">
                     
                 </div>
                 

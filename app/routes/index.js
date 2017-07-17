@@ -67,8 +67,13 @@ module.exports = function (app, passport) {
 			
 			var context = {
 				loggedin: loggedin
-				
 			}
+			
+			if (loggedin == true) {
+				context.user = req.user;
+				context.user_info = req.user.twitter;
+			}
+			
 			
 			pollController.getPoll(pollid).then (function (poll) {
 				context.poll = poll;
