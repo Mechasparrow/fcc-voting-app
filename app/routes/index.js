@@ -76,6 +76,18 @@ module.exports = function (app, passport) {
 			
 		})
 		
+	app.route('/polls/json/:pollid')
+		.get(function (req, res) {
+			
+			var pollid = req.params.pollid;
+			
+			pollController.getPoll(pollid).then (function (poll) {
+				res.json(poll);
+			})
+			
+		})
+		
+		
 	app.route('/submitpoll')
 		.post(function (req, res) {
 			

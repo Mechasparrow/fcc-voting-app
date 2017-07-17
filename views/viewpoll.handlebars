@@ -2,6 +2,8 @@
     You are currently viewing the <b>{{poll.pollname}}</b> poll
 </h1>
 
+<p id = "viewpollid">{{poll.id}}</p>
+
 <div class = "well">
     
     <div class = "row">
@@ -35,7 +37,7 @@
         
         <!-- Polling results -->
         <div class = "col-sm-6">
-            {{poll.votes}}
+            <canvas id="pollchart"></canvas>
         </div>
         
         
@@ -44,3 +46,5 @@
     
     
 </div>
+
+<script src = "/controllers/clientviewpoll.js"></script>
