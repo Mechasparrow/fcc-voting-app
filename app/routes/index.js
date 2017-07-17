@@ -65,15 +65,18 @@ module.exports = function (app, passport) {
 			
 			var loggedin = req.isAuthenticated();
 			
-			var share_url = process.env.APP_URL
-			console.log(share_url);
-			
 			var context = {
 				loggedin: loggedin
+				
 			}
 			
 			pollController.getPoll(pollid).then (function (poll) {
 				context.poll = poll;
+				
+				var tweetmessage = poll.pollname + " | " + "Mechavote";
+				context.tweetmessage = tweetmessage;
+				
+				
 				res.render('viewpoll', context);
 			});
 			
