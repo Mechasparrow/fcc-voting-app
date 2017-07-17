@@ -65,6 +65,9 @@ module.exports = function (app, passport) {
 			
 			var loggedin = req.isAuthenticated();
 			
+			var share_url = process.env.APP_URL
+			console.log(share_url);
+			
 			var context = {
 				loggedin: loggedin
 			}
